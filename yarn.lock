@@ -2788,10 +2788,10 @@
   resolved "https://registry.npmjs.org/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-NeteaseCloudMusicApi@^4.23.3:
-  version "4.24.0"
-  resolved "https://registry.yarnpkg.com/NeteaseCloudMusicApi/-/NeteaseCloudMusicApi-4.24.0.tgz#ea9236d82a7e1281df95dfc2c8b973f4dc5428d6"
-  integrity sha512-1fW3lf4iFlQFYpbAA2AptfnBh8fLPMH2aQnROhu77ub58ezzQdXahOAcN+PRvnnR4KcqmQeAFfYMkmuewBLiiA==
+NeteaseCloudMusicApi@4.27.0:
+  version "4.27.0"
+  resolved "https://registry.npmmirror.com/NeteaseCloudMusicApi/-/NeteaseCloudMusicApi-4.27.0.tgz#ff21d468e053df81e3f9591bf3fcb58d30d16448"
+  integrity sha512-SRduMpAYnq5K/qyMxZ7iB/SfFPqEDLUnmForqDOGLpyJFdXKfuXBjIErRfa9gxNYN3OjxtZ5yV5H0zbPxjDkJw==
   dependencies:
     axios "^1.2.2"
     crypto-js "^4.2.0"

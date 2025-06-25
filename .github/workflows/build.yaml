@@ -23,7 +23,7 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v3
         with:
-          submodules: "recursive"
+          submodules: 'recursive'
 
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v3
@@ -61,18 +61,11 @@ jobs:
         shell: bash
 
       - name: Install UNM dependencies for macOS ARM64
-        if: runner.os == 'macOS' && runner.arch == 'arm64'
-        run: |
-          ${{ env.YARN_INSTALL_NOPT }} \
-            @unblockneteasemusic/rust-napi-darwin-arm64@${{steps.get_unm_version.outputs.unmver}} \
-            dmg-license
-        shell: bash
-
-      - name: Install UNM dependencies for macOS x64
-        if: runner.os == 'macOS' && runner.arch == 'x64'
+        if: runner.os == 'macOS'
         run: |
           ${{ env.YARN_INSTALL_NOPT }} \
             @unblockneteasemusic/rust-napi-darwin-x64@${{steps.get_unm_version.outputs.unmver}} \
+            @unblockneteasemusic/rust-napi-darwin-arm64@${{steps.get_unm_version.outputs.unmver}} \
             dmg-license
         shell: bash
 
@@ -107,7 +100,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: YesPlayMusic-mac
-          path: dist_electron/*.dmg
+          path: dist_electron/*-universal.dmg
           if-no-files-found: ignore
 
       - uses: actions/upload-artifact@v4
