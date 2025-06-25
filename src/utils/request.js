@@ -38,6 +38,10 @@ service.interceptors.request.use(function (config) {
     config.params.realIP = '211.161.244.70';
   }
 
+  if (config.url.includes('/login')) {
+    config.params.cookie = 'os=pc;';
+  }
+
   // Force real_ip
   const enableRealIP = JSON.parse(
     localStorage.getItem('settings')

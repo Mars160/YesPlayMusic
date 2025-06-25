@@ -60,12 +60,19 @@ jobs:
             @unblockneteasemusic/rust-napi-win32-x64-msvc@${{steps.get_unm_version.outputs.unmver}}
         shell: bash
 
-      - name: Install UNM dependencies for macOS
-        if: runner.os == 'macOS'
+      - name: Install UNM dependencies for macOS ARM64
+        if: runner.os == 'macOS' && runner.arch == 'arm64'
+        run: |
+          ${{ env.YARN_INSTALL_NOPT }} \
+            @unblockneteasemusic/rust-napi-darwin-arm64@${{steps.get_unm_version.outputs.unmver}} \
+            dmg-license
+        shell: bash
+
+      - name: Install UNM dependencies for macOS x64
+        if: runner.os == 'macOS' && runner.arch == 'x64'
         run: |
           ${{ env.YARN_INSTALL_NOPT }} \
             @unblockneteasemusic/rust-napi-darwin-x64@${{steps.get_unm_version.outputs.unmver}} \
-            @unblockneteasemusic/rust-napi-darwin-arm64@${{steps.get_unm_version.outputs.unmver}} \
             dmg-license
         shell: bash
 
@@ -97,19 +104,19 @@ jobs:
 
           use_vue_cli: true
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: YesPlayMusic-mac
-          path: dist_electron/*-universal.dmg
+          path: dist_electron/*.dmg
           if-no-files-found: ignore
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: YesPlayMusic-win
           path: dist_electron/*Setup*.exe
           if-no-files-found: ignore
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: YesPlayMusic-linux
           path: dist_electron/*.AppImage
